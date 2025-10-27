@@ -15,7 +15,11 @@ def pretty_print_report(letter_list, book_path, total_words):
     for pair in letter_list:
         print(f'{pair["char"]}: {pair["num"]}')
 def main():
-    book_path =
+    try:
+        book_path = sys.argv[1]
+    except IndexError:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
     book_text = get_book_text(book_path)
     total_word_count = total_words(book_text)
     num_letters = letter_count(book_text)
